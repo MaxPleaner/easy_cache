@@ -20,12 +20,6 @@ my_method_cache = EasyCache.new("my_method_cache.yaml")
 
 def my_method(arg)
   my_method_cache.get_or_set(arg) do
-    "#{arg} result is saved" 
-  end
-end
-
-def my_method(arg)
-  my_method_cache.get_or_set(arg) do
     "#{arg} result is saved"
   end
 end
