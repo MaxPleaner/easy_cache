@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.5
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <iframe id="search_frame" src="class_list.html"></iframe>
+
+      <div id="content"><div id='filecontents'>
+<p>EasyCache is a way to easily cache method calls to a readable YAML file.</p>
+
+<p>Internally it uses the <a
+href="http://github.com/maxpleaner/gemmy">gemmy</a> library I made.</p>
+
+<p>Specifically, the PersistedHash (which syncs a hash&#39;s state to YAML
+file) is extended with a <code>get_or_set(key, &amp;blk)</code> method
+where the block result gets cached as <code>key</code>.</p>
+
+<p>The return value of <code>get_or_set</code> is the block result. So it can
+easily be placed as a wrapper around any synchronous method:</p>
+
+<pre class="code ruby"><code class="ruby">
+require &#39;easy_cache&#39;
+                # The ~/gemmy path will be automatically created
+                # However the cache path can be overridden with:
+                # ENV[&quot;GEMMY_CACHE_PATH&quot;]
+
+my_method_cad(arg)
+  my_method_cache.get_or_set(arg) do
+    &quot;#{arg} result is saved&quot; 
+  end
+end
+
+def my_method(arg)
+  my_method_cache.get_or_set(arg) do
+    &quot;#{arg} result is saved&quot;
+  end
+end</code></pre>
+
+<p>There are other methods in the API, too.</p>
+<ul><li>
+<p><code>#clear</code></p>
+</li><li>
+<p><code>#set_state(hash)</code></p>
+</li><li>
+<p><code>#get(*nested_keys)</code></p>
+</li><li>
+<p><code>#set(*nested_keys, val)</code></p>
+</li><li>
+<p><code>#data</code> (the entire state)</p>
+</li></ul>
+
+<p>Note that <code>[]</code> and <code>[]=</code> only interact with the
+in-memory hash. They don&#39;t touch the YAML file.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Thu Dec 22 01:26:48 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.5 (ruby-2.3.0).
+</div>
+
+    </div>
+  </body>
+</html>

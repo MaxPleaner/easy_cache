@@ -1,16 +1,25 @@
 require 'gemmy'
 
-module EasyCache
-  def cache(db_name)
-    @cache = EasyCache.cache db_name
-    
+class EasyCache
+
+  module HashPatch
+    def cache(db_name)
+      EasyCacheModule.cache self, db_name
+    end
+
+    def self.cache(hash, db_name)
+      Gemmy.component("cache").new db_name
+    end
+
+    refine Hash do
+      include HashPatch
+    end
   end
-  def self.cache(db_name)
-    Gemmy.component("cache").new db_name
+  
+  def self.new(hash={}, db_name)
+    HashPatch.cache hash, db_name
   end
-  refine Hash do
-    include EasyCache
-  end
+
 end
 
 Gem.find_files("easy_cache/**/*.rb").each &method(:require)
