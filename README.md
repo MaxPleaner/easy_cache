@@ -11,6 +11,8 @@ around any synchronous method:
 ```rb
 
 require 'easy_cache'
+
+my_method_cache = EasyCache.new("my_method_cache.yaml")
                 # The ~/gemmy path will be automatically created
                 # However the cache path can be overridden with:
                 # ENV["GEMMY_CACHE_PATH"]
