@@ -18,7 +18,7 @@ my_method_cache = EasyCache.new("my_method_cache.yaml")
                 # The caches folder can be changed with:
                 # ENV["GEMMY_CACHE_PATH"]
 
-my_method_cad(arg)
+def my_method(arg)
   my_method_cache.get_or_set(arg) do
     "#{arg} result is saved" 
   end
