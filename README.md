@@ -13,8 +13,9 @@ around any synchronous method:
 require 'easy_cache'
 
 my_method_cache = EasyCache.new("my_method_cache.yaml")
+                # The file's path will be "~/gemmy/caches/my_method_cache.yaml"
                 # The ~/gemmy path will be automatically created
-                # However the cache path can be overridden with:
+                # The caches folder can be changed with:
                 # ENV["GEMMY_CACHE_PATH"]
 
 my_method_cad(arg)
