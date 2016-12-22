@@ -12,7 +12,7 @@ around any synchronous method:
 
 require 'easy_cache'
 
-my_method_cache = EasyCache.new("my_method_cache.yaml")
+my_method_cache = EasyCache.new("my_method_cache")
                 # The file's path will be "~/gemmy/caches/my_method_cache.yaml"
                 # The ~/gemmy path will be automatically created
                 # The caches folder can be changed with:
