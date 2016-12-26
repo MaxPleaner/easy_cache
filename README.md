@@ -1,5 +1,9 @@
 EasyCache is a way to easily cache method calls to a readable YAML file.
 
+This is on RubyGems, so you can just plop `gem "easy_cache"` in your Gemfile.
+
+Require with `require "easy_cache"` as expected. 
+
 Internally it uses the [gemmy](http://github.com/maxpleaner/gemmy) library I made.
 
 Specifically, the PersistedHash (which syncs a hash's state to YAML file) is
