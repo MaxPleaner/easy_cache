@@ -9,7 +9,7 @@ Internally it uses the [gemmy](http://github.com/maxpleaner/gemmy) library I mad
 Specifically, the PersistedHash (which syncs a hash's state to YAML file) is
 extended with a `get_or_set(key, &blk)` method where the block result gets cached as `key`.
 
-The return value of `get_or_set` is the block result. So it can easily be placed as a wrapper
+In the case that the key was not found, the return value of `get_or_set` is the block result. So it can easily be placed as a wrapper
 around any synchronous method:
 
 ```rb
@@ -24,6 +24,7 @@ my_method_cache = EasyCache.new("my_method_cache")
 
 def my_method(arg)
   my_method_cache.get_or_set(arg) do
+    # do a bunch of stuff here
     "#{arg} result is saved"
   end
 end
